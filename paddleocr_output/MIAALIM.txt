@@ -1,0 +1,25 @@
+Title: mIAALIM Monthly Timesheet Record Card Month:
+Employee Name: MIAALIM
+WP/FIN No: M30Q
+Employee ID: FT-028
+Month: 02
+Year: 
+
+Daily Rows:
+{"day": "14", "regular_hours": "8", "ot_hours": "", "rope_access_allowance": "10", "transport_allowance": "", "night_shift_allowance": "", "food_allowance": "", "job_site": "", "supervisor_signature": "", "allowance_total": "10"}
+{"day": "15", "regular_hours": "8", "ot_hours": "", "rope_access_allowance": "016", "transport_allowance": "", "night_shift_allowance": "", "food_allowance": "", "job_site": "", "supervisor_signature": "N", "allowance_total": "16"}
+{"day": "16", "regular_hours": "PIH", "ot_hours": "", "rope_access_allowance": "", "transport_allowance": "", "night_shift_allowance": "", "food_allowance": "", "job_site": "", "supervisor_signature": "", "allowance_total": "0"}
+{"day": "17", "regular_hours": "P.H", "ot_hours": "", "rope_access_allowance": "", "transport_allowance": "", "night_shift_allowance": "", "food_allowance": "", "job_site": "", "supervisor_signature": "", "allowance_total": "0"}
+{"day": "18", "regular_hours": "PiH", "ot_hours": "", "rope_access_allowance": "", "transport_allowance": "", "night_shift_allowance": "", "food_allowance": "", "job_site": "", "supervisor_signature": "", "allowance_total": "0"}
+{"day": "19", "regular_hours": "PIH", "ot_hours": "", "rope_access_allowance": "", "transport_allowance": "", "night_shift_allowance": "", "food_allowance": "", "job_site": "", "supervisor_signature": "", "allowance_total": "0"}
+{"day": "20", "regular_hours": "8", "ot_hours": "4", "rope_access_allowance": "", "transport_allowance": "", "night_shift_allowance": "", "food_allowance": "", "job_site": "", "supervisor_signature": "", "allowance_total": "4"}
+{"day": "21", "regular_hours": "", "ot_hours": "4", "rope_access_allowance": "", "transport_allowance": "", "night_shift_allowance": "", "food_allowance": "", "job_site": "AIA", "supervisor_signature": "V", "allowance_total": "4"}
+{"day": "22", "regular_hours": "8", "ot_hours": "", "rope_access_allowance": "", "transport_allowance": "", "night_shift_allowance": "", "food_allowance": "", "job_site": "ALA", "supervisor_signature": "", "allowance_total": "0"}
+{"day": "23", "regular_hours": "8", "ot_hours": "2", "rope_access_allowance": "", "transport_allowance": "", "night_shift_allowance": "", "food_allowance": "", "job_site": "ALE", "supervisor_signature": "WM", "allowance_total": "2"}
+{"day": "24", "regular_hours": "OPP", "ot_hours": "", "rope_access_allowance": "", "transport_allowance": "", "night_shift_allowance": "", "food_allowance": "", "job_site": "ALA", "supervisor_signature": "N", "allowance_total": "0"}
+{"day": "25", "regular_hours": "8", "ot_hours": "2", "rope_access_allowance": "", "transport_allowance": "", "night_shift_allowance": "", "food_allowance": "", "job_site": "", "supervisor_signature": "", "allowance_total": "2"}
+{"day": "26", "regular_hours": "8", "ot_hours": "2", "rope_access_allowance": "", "transport_allowance": "", "night_shift_allowance": "", "food_allowance": "", "job_site": "ALA", "supervisor_signature": "", "allowance_total": "2"}
+{"day": "27", "regular_hours": "8", "ot_hours": "1", "rope_access_allowance": "", "transport_allowance": "", "night_shift_allowance": "", "food_allowance": "", "job_site": "AIA", "supervisor_signature": "WL", "allowance_total": "1"}
+{"day": "28", "regular_hours": "8", "ot_hours": "Y", "rope_access_allowance": "10", "transport_allowance": "", "night_shift_allowance": "", "food_allowance": "", "job_site": "AIE", "supervisor_signature": "", "allowance_total": "10"}
+{"day": "29", "regular_hours": "", "ot_hours": "", "rope_access_allowance": "", "transport_allowance": "", "night_shift_allowance": "", "food_allowance": "", "job_site": "UOB", "supervisor_signature": "", "allowance_total": "0"}
+{"day": "30", "regular_hours": "", "ot_hours": "", "rope_access_allowance": "", "transport_allowance": "", "night_shift_allowance": "", "food_allowance": "", "job_site": "", "supervisor_signature": "", "allowance_total": "0"}

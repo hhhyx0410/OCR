@@ -1,0 +1,39 @@
+Title: Monthly Timesheet Record Card
+Employee Name: MOSATRAF
+WP/FIN No: 466Q
+Employee ID: FT5
+Month: 02
+Year: 2026
+
+Daily Rows:
+{"day": "01", "regular_hours": "", "ot_hours": "", "rope_access_allowance": "2", "transport_allowance": "", "night_shift_allowance": "", "food_allowance": "1", "job_site": "", "supervisor_signature": "", "allowance_total": "3"}
+{"day": "02", "regular_hours": "", "ot_hours": "6", "rope_access_allowance": "2", "transport_allowance": "", "night_shift_allowance": "", "food_allowance": "A", "job_site": "", "supervisor_signature": "", "allowance_total": "8"}
+{"day": "03", "regular_hours": "", "ot_hours": "8", "rope_access_allowance": "", "transport_allowance": "", "night_shift_allowance": "", "food_allowance": "", "job_site": "", "supervisor_signature": "", "allowance_total": "8"}
+{"day": "04", "regular_hours": "", "ot_hours": "", "rope_access_allowance": "", "transport_allowance": "", "night_shift_allowance": "", "food_allowance": "", "job_site": "", "supervisor_signature": "", "allowance_total": "0"}
+{"day": "05", "regular_hours": "", "ot_hours": "", "rope_access_allowance": "", "transport_allowance": "", "night_shift_allowance": "", "food_allowance": "91", "job_site": "", "supervisor_signature": "", "allowance_total": "91"}
+{"day": "06", "regular_hours": "", "ot_hours": "", "rope_access_allowance": "", "transport_allowance": "", "night_shift_allowance": "", "food_allowance": "", "job_site": "", "supervisor_signature": "", "allowance_total": "0"}
+{"day": "07", "regular_hours": "", "ot_hours": "8", "rope_access_allowance": "10", "transport_allowance": "", "night_shift_allowance": "", "food_allowance": "", "job_site": "", "supervisor_signature": "", "allowance_total": "18"}
+{"day": "08", "regular_hours": "", "ot_hours": "", "rope_access_allowance": "2", "transport_allowance": "", "night_shift_allowance": "", "food_allowance": "", "job_site": "", "supervisor_signature": "", "allowance_total": "2"}
+{"day": "09", "regular_hours": "", "ot_hours": "", "rope_access_allowance": "2", "transport_allowance": "", "night_shift_allowance": "", "food_allowance": "", "job_site": "", "supervisor_signature": "", "allowance_total": "2"}
+{"day": "10", "regular_hours": "", "ot_hours": "8", "rope_access_allowance": "01", "transport_allowance": "", "night_shift_allowance": "", "food_allowance": "01", "job_site": "", "supervisor_signature": "", "allowance_total": "10"}
+{"day": "11", "regular_hours": "12", "ot_hours": "8", "rope_access_allowance": "10", "transport_allowance": "", "night_shift_allowance": "", "food_allowance": "", "job_site": "", "supervisor_signature": "", "allowance_total": "18"}
+{"day": "12", "regular_hours": "", "ot_hours": "", "rope_access_allowance": "", "transport_allowance": "", "night_shift_allowance": "", "food_allowance": "", "job_site": "", "supervisor_signature": "", "allowance_total": "0"}
+{"day": "13", "regular_hours": "", "ot_hours": "8", "rope_access_allowance": "01", "transport_allowance": "", "night_shift_allowance": "", "food_allowance": "10", "job_site": "", "supervisor_signature": "", "allowance_total": "19"}
+{"day": "14", "regular_hours": "", "ot_hours": "", "rope_access_allowance": "1", "transport_allowance": "", "night_shift_allowance": "", "food_allowance": "", "job_site": "", "supervisor_signature": "", "allowance_total": "1"}
+{"day": "15", "regular_hours": "", "ot_hours": "", "rope_access_allowance": "", "transport_allowance": "", "night_shift_allowance": "", "food_allowance": "", "job_site": "", "supervisor_signature": "", "allowance_total": "0"}
+{"day": "16", "regular_hours": "", "ot_hours": "", "rope_access_allowance": "", "transport_allowance": "", "night_shift_allowance": "", "food_allowance": "", "job_site": "", "supervisor_signature": "", "allowance_total": "0"}
+{"day": "17", "regular_hours": "", "ot_hours": "", "rope_access_allowance": "", "transport_allowance": "", "night_shift_allowance": "", "food_allowance": "", "job_site": "", "supervisor_signature": "", "allowance_total": "0"}
+{"day": "18", "regular_hours": "", "ot_hours": "", "rope_access_allowance": "", "transport_allowance": "", "night_shift_allowance": "", "food_allowance": "", "job_site": "", "supervisor_signature": "", "allowance_total": "0"}
+{"day": "19", "regular_hours": "", "ot_hours": "8", "rope_access_allowance": "", "transport_allowance": "", "night_shift_allowance": "", "food_allowance": "", "job_site": "A", "supervisor_signature": "", "allowance_total": "8"}
+{"day": "20", "regular_hours": "", "ot_hours": "8", "rope_access_allowance": "1", "transport_allowance": "", "night_shift_allowance": "", "food_allowance": "", "job_site": "", "supervisor_signature": "", "allowance_total": "9"}
+{"day": "21", "regular_hours": "", "ot_hours": "", "rope_access_allowance": "1", "transport_allowance": "", "night_shift_allowance": "", "food_allowance": "", "job_site": "1E", "supervisor_signature": "", "allowance_total": "1"}
+{"day": "22", "regular_hours": "", "ot_hours": "", "rope_access_allowance": "", "transport_allowance": "", "night_shift_allowance": "", "food_allowance": "A", "job_site": "", "supervisor_signature": "", "allowance_total": "0"}
+{"day": "23", "regular_hours": "", "ot_hours": "8", "rope_access_allowance": "2", "transport_allowance": "", "night_shift_allowance": "", "food_allowance": "", "job_site": "", "supervisor_signature": "", "allowance_total": "10"}
+{"day": "24", "regular_hours": "", "ot_hours": "8", "rope_access_allowance": "2", "transport_allowance": "", "night_shift_allowance": "", "food_allowance": "", "job_site": "", "supervisor_signature": "", "allowance_total": "10"}
+{"day": "25", "regular_hours": "", "ot_hours": "8", "rope_access_allowance": "2", "transport_allowance": "", "night_shift_allowance": "", "food_allowance": "1", "job_site": "", "supervisor_signature": "", "allowance_total": "11"}
+{"day": "26", "regular_hours": "", "ot_hours": "8", "rope_access_allowance": "4", "transport_allowance": "", "night_shift_allowance": "", "food_allowance": "", "job_site": "", "supervisor_signature": "", "allowance_total": "12"}
+{"day": "27", "regular_hours": "", "ot_hours": "8", "rope_access_allowance": "2", "transport_allowance": "", "night_shift_allowance": "", "food_allowance": "", "job_site": "OB", "supervisor_signature": "", "allowance_total": "10"}
+{"day": "28", "regular_hours": "", "ot_hours": "", "rope_access_allowance": "", "transport_allowance": "", "night_shift_allowance": "", "food_allowance": "", "job_site": "", "supervisor_signature": "", "allowance_total": "0"}
+{"day": "29", "regular_hours": "", "ot_hours": "", "rope_access_allowance": "", "transport_allowance": "", "night_shift_allowance": "", "food_allowance": "", "job_site": "", "supervisor_signature": "", "allowance_total": "0"}
+{"day": "30", "regular_hours": "", "ot_hours": "", "rope_access_allowance": "", "transport_allowance": "", "night_shift_allowance": "", "food_allowance": "", "job_site": "", "supervisor_signature": "", "allowance_total": "0"}
+{"day": "31", "regular_hours": "", "ot_hours": "", "rope_access_allowance": "26", "transport_allowance": "", "night_shift_allowance": "", "food_allowance": "", "job_site": "HRD", "supervisor_signature": "partnent", "allowance_total": "26"}
