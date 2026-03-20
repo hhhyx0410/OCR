@@ -1,8 +1,0 @@
-Title: Monthly Timesheet Record Card
-Employee Name: MOSATRAF
-WP/FIN No: 466Q
-Employee ID: FT5
-Month: 02
-Year: 2026
-
-Daily Rows:

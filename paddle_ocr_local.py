@@ -17,9 +17,14 @@ IMAGE_SUFFIXES = {".jpg", ".jpeg", ".png", ".bmp", ".tif", ".tiff", ".webp"}
 BASE_DIR = Path(__file__).resolve().parent
 DEFAULT_INPUT = BASE_DIR / "ocr_images"
 DEFAULT_OUTPUT = BASE_DIR / "paddleocr_output"
+DEFAULT_LEARNING_DIR = BASE_DIR / "learning"
+DEFAULT_CORRECTIONS_PATH = DEFAULT_LEARNING_DIR / "field_corrections.json"
+DEFAULT_PROFILES_PATH = DEFAULT_LEARNING_DIR / "field_profiles.json"
 DEFAULT_MANIFEST = "processed_manifest.json"
 TABLE_ROW_COUNT = 31
 MIN_CONTOUR_AREA_RATIO = 0.2
+LEARNED_CORRECTIONS: dict[str, Any] = {}
+LEARNED_PROFILES: dict[str, Any] = {}
 
 # Normalized regions tuned for the Monthly Timesheet Record Card layout.
 HEADER_BOXES = {
@@ -591,6 +596,11 @@ def parse_header_from_lines(lines: list[OCRLine], width: int, height: int) -> di
     employee_name = extract_name_value(name_text) or extract_name_value(combined_text)
     wp_fin_no = extract_wp_fin_value(wp_text) or extract_wp_fin_value(combined_text)
     employee_id = extract_employee_id_value(employee_id_text) or extract_employee_id_value(combined_text)
+    employee_name = apply_learned_correction("header", "employee_name", employee_name)
+    wp_fin_no = apply_learned_correction("header", "wp_fin_no", wp_fin_no)
+    employee_id = apply_learned_correction("header", "employee_id", employee_id)
+    month = apply_learned_correction("header", "month", month)
+    year = apply_learned_correction("header", "year", year)
 
     return {
         "document_title": title_text,
@@ -800,6 +810,56 @@ def save_manifest(output_dir: Path, manifest: dict[str, Any]) -> None:
     )
 
 
+def load_learned_corrections(path: Path = DEFAULT_CORRECTIONS_PATH) -> dict[str, Any]:
+    if not path.exists():
+        return {"header": {}, "daily_rows": {}}
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return {"header": {}, "daily_rows": {}}
+    if not isinstance(payload, dict):
+        return {"header": {}, "daily_rows": {}}
+    return payload
+
+
+def load_learned_profiles(path: Path = DEFAULT_PROFILES_PATH) -> dict[str, Any]:
+    if not path.exists():
+        return {"daily_rows": {"valid_values": {}, "day_defaults": {}}}
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return {"daily_rows": {"valid_values": {}, "day_defaults": {}}}
+    if not isinstance(payload, dict):
+        return {"daily_rows": {"valid_values": {}, "day_defaults": {}}}
+    return payload
+
+
+def apply_learned_correction(section: str, field: str, value: str) -> str:
+    if not value:
+        return value
+    section_rules = LEARNED_CORRECTIONS.get(section, {})
+    field_rules = section_rules.get(field, {}) if isinstance(section_rules, dict) else {}
+    if not isinstance(field_rules, dict):
+        return value
+    return str(field_rules.get(value, value))
+
+
+def get_field_valid_values(field: str) -> set[str]:
+    daily_rows = LEARNED_PROFILES.get("daily_rows", {})
+    valid_values = daily_rows.get("valid_values", {}) if isinstance(daily_rows, dict) else {}
+    field_values = valid_values.get(field, []) if isinstance(valid_values, dict) else []
+    return {str(item) for item in field_values}
+
+
+def get_day_default(field: str, day: str) -> str:
+    daily_rows = LEARNED_PROFILES.get("daily_rows", {})
+    day_defaults = daily_rows.get("day_defaults", {}) if isinstance(daily_rows, dict) else {}
+    field_defaults = day_defaults.get(field, {}) if isinstance(day_defaults, dict) else {}
+    if not isinstance(field_defaults, dict):
+        return ""
+    return str(field_defaults.get(day, ""))
+
+
 def should_skip_image(image_path: Path, manifest: dict[str, Any]) -> bool:
     entry = manifest.get(build_manifest_key(image_path))
     if not isinstance(entry, dict):
@@ -970,11 +1030,42 @@ def postprocess_row_values(row: dict[str, str]) -> dict[str, str]:
     if row["rope_access_allowance"] in {"810", "910", "016", "010"}:
         row["rope_access_allowance"] = row["rope_access_allowance"][-2:].lstrip("0") or "0"
 
-    if row["ot_hours"] and row["ot_hours"] not in {"1", "2", "3", "4", "5", "6", "7", "8", "10", "12"}:
-        row["ot_hours"] = ""
+    for field_name in ("regular_hours", "ot_hours", "rope_access_allowance"):
+        row[field_name] = apply_learned_correction("daily_rows", field_name, row.get(field_name, ""))
 
-    if row["regular_hours"] not in {"", "4", "8", "12", "P.H"}:
-        row["regular_hours"] = ""
+    builtin_valid_values = {
+        "regular_hours": {"", "4", "8", "12", "P.H"},
+        "ot_hours": {"", "1", "2", "3", "4", "5", "6", "7", "8", "10", "12"},
+        "rope_access_allowance": {""},
+    }
+    learned_regular = get_field_valid_values("regular_hours")
+    learned_ot = get_field_valid_values("ot_hours")
+    learned_rope = get_field_valid_values("rope_access_allowance")
+    if learned_regular:
+        builtin_valid_values["regular_hours"] = builtin_valid_values["regular_hours"] | learned_regular
+    if learned_ot:
+        builtin_valid_values["ot_hours"] = builtin_valid_values["ot_hours"] | learned_ot
+    if learned_rope:
+        builtin_valid_values["rope_access_allowance"] = builtin_valid_values["rope_access_allowance"] | learned_rope
+
+    if row["rope_access_allowance"] and not re.fullmatch(r"\d+(?:\.\d+)?", row["rope_access_allowance"]):
+        row["rope_access_allowance"] = ""
+
+    for field_name in ("regular_hours", "ot_hours", "rope_access_allowance"):
+        value = row.get(field_name, "")
+        valid_values = builtin_valid_values[field_name]
+        if field_name == "rope_access_allowance":
+            if value and not re.fullmatch(r"\d+(?:\.\d+)?", value):
+                value = ""
+            if value in {"0"}:
+                value = ""
+        elif value not in valid_values:
+            day_default = get_day_default(field_name, row["day"])
+            if day_default in valid_values:
+                value = day_default
+            else:
+                value = ""
+        row[field_name] = value
 
     return row
 
@@ -1338,6 +1429,7 @@ def export_summary(summary_rows: list[dict[str, Any]], output_dir: Path) -> None
 
 
 def main() -> None:
+    global LEARNED_CORRECTIONS, LEARNED_PROFILES
     args = parse_args()
     input_path = Path(args.input_path).resolve()
     output_dir = Path(args.output_dir).resolve()
@@ -1347,6 +1439,8 @@ def main() -> None:
     images = iter_images(input_path, recursive=recursive)
     output_dir.mkdir(parents=True, exist_ok=True)
     manifest = {} if args.rescan_all else load_manifest(output_dir)
+    LEARNED_CORRECTIONS = load_learned_corrections()
+    LEARNED_PROFILES = load_learned_profiles()
 
     print(f"Input path: {input_path}")
     print(f"Images found: {len(images)}")
@@ -1354,6 +1448,8 @@ def main() -> None:
     print(f"Language: {args.lang}")
     print(f"Recursive scan: {recursive}")
     print(f"Rescan all: {args.rescan_all}")
+    print(f"Loaded learned correction fields: {sum(len(v) for section in LEARNED_CORRECTIONS.values() if isinstance(section, dict) for v in section.values() if isinstance(v, dict))}")
+    print(f"Loaded learned profiles: {bool(LEARNED_PROFILES.get('daily_rows'))}")
     print("")
 
     ocr = build_ocr_engine(args)
